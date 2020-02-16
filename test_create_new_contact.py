@@ -11,7 +11,7 @@ class CreateNewContact(unittest.TestCase):
     def test_create_new_contact(self):
         wd = self.wd
         self.open_home_page(wd)
-        self.login(wd)
+        self.login(wd, "admin", "secret")
         self.add_new_contact(wd)
         self.return_home_page(wd)
         self.logout(wd)
@@ -22,37 +22,40 @@ class CreateNewContact(unittest.TestCase):
     def return_home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
 
-    def add_new_contact(self, wd):
+    def add_new_contact(self, wd, firstname=u"Фамилия", middlename=u"Отчество", lastname=u"Имя", nickname=u"Никнейм",
+                        title=u"Заголовок", company=u"Компания", address=u"Адрес", home_phone=u"Домашний телефон",
+                        mobile_phone=u"Мобильный телефон", work_phone=u"Рабочий телефон", fax=u"Факс",
+                        email=u"электронная почта", homepage=u"сайт", address2=u"адрес2", phone2=u"дом", notes=u"заметка"):
         #создание нового контакта
         wd.find_element_by_link_text("add new").click()
         #заполнение формы контакта
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
-        wd.find_element_by_name("firstname").send_keys(u"Фамилия")
+        wd.find_element_by_name("firstname").send_keys(firstname)
         wd.find_element_by_name("middlename").clear()
-        wd.find_element_by_name("middlename").send_keys(u"Отчество")
+        wd.find_element_by_name("middlename").send_keys(middlename)
         wd.find_element_by_name("lastname").clear()
-        wd.find_element_by_name("lastname").send_keys(u"Имя")
+        wd.find_element_by_name("lastname").send_keys(lastname)
         wd.find_element_by_name("nickname").clear()
-        wd.find_element_by_name("nickname").send_keys(u"Никнейм")
+        wd.find_element_by_name("nickname").send_keys(nickname)
         wd.find_element_by_name("title").clear()
-        wd.find_element_by_name("title").send_keys(u"Заголовок")
+        wd.find_element_by_name("title").send_keys(title)
         wd.find_element_by_name("company").clear()
-        wd.find_element_by_name("company").send_keys(u"Компания")
+        wd.find_element_by_name("company").send_keys(company)
         wd.find_element_by_name("address").clear()
-        wd.find_element_by_name("address").send_keys(u"Адрес")
+        wd.find_element_by_name("address").send_keys(address)
         wd.find_element_by_name("home").clear()
-        wd.find_element_by_name("home").send_keys(u"Домашний телефон")
+        wd.find_element_by_name("home").send_keys(home_phone)
         wd.find_element_by_name("mobile").clear()
-        wd.find_element_by_name("mobile").send_keys(u"Мобильный телефон")
+        wd.find_element_by_name("mobile").send_keys(mobile_phone)
         wd.find_element_by_name("work").clear()
-        wd.find_element_by_name("work").send_keys(u"Рабочий телефон")
+        wd.find_element_by_name("work").send_keys(work_phone)
         wd.find_element_by_name("fax").clear()
-        wd.find_element_by_name("fax").send_keys(u"Факс")
+        wd.find_element_by_name("fax").send_keys(fax)
         wd.find_element_by_name("email").clear()
-        wd.find_element_by_name("email").send_keys(u"электронная почта")
+        wd.find_element_by_name("email").send_keys(email)
         wd.find_element_by_name("homepage").clear()
-        wd.find_element_by_name("homepage").send_keys(u"сайт")
+        wd.find_element_by_name("homepage").send_keys(homepage)
         wd.find_element_by_name("bday").click()
         Select(wd.find_element_by_name("bday")).select_by_visible_text("14")
         wd.find_element_by_xpath("//option[@value='14']").click()
@@ -73,20 +76,20 @@ class CreateNewContact(unittest.TestCase):
         wd.find_element_by_name("ayear").send_keys("2020")
         wd.find_element_by_name("address2").click()
         wd.find_element_by_name("address2").clear()
-        wd.find_element_by_name("address2").send_keys(u"адрес2")
+        wd.find_element_by_name("address2").send_keys(address2)
         wd.find_element_by_name("phone2").clear()
-        wd.find_element_by_name("phone2").send_keys(u"дом")
+        wd.find_element_by_name("phone2").send_keys(phone2)
         wd.find_element_by_name("notes").clear()
-        wd.find_element_by_name("notes").send_keys(u"заметка")
+        wd.find_element_by_name("notes").send_keys(notes)
         #нажатие кнопки submit
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
 
-    def login(self, wd):
+    def login(self, wd, username, password):
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
-        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_name("user").send_keys(username)
         wd.find_element_by_name("pass").clear()
-        wd.find_element_by_name("pass").send_keys("secret")
+        wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//input[@value='Login']").click()
 
     def open_home_page(self, wd):
