@@ -12,7 +12,9 @@ class CreateNewContact(unittest.TestCase):
         wd = self.wd
         self.open_home_page(wd)
         self.login(wd, "admin", "secret")
-        self.add_new_contact(wd)
+        self.add_new_contact(wd, u"Фамилия", u"Отчество", u"Имя", u"Никнейм", u"Заголовок", u"Компания", u"Адрес",
+                             u"Домашний телефон", u"Мобильный телефон", u"Рабочий телефон", u"Факс",
+                             u"электронная почта", u"сайт", u"адрес2", u"дом", u"заметка")
         self.return_home_page(wd)
         self.logout(wd)
 
@@ -22,10 +24,8 @@ class CreateNewContact(unittest.TestCase):
     def return_home_page(self, wd):
         wd.find_element_by_link_text("home page").click()
 
-    def add_new_contact(self, wd, firstname=u"Фамилия", middlename=u"Отчество", lastname=u"Имя", nickname=u"Никнейм",
-                        title=u"Заголовок", company=u"Компания", address=u"Адрес", home_phone=u"Домашний телефон",
-                        mobile_phone=u"Мобильный телефон", work_phone=u"Рабочий телефон", fax=u"Факс",
-                        email=u"электронная почта", homepage=u"сайт", address2=u"адрес2", phone2=u"дом", notes=u"заметка"):
+    def add_new_contact(self, wd, firstname, middlename, lastname, nickname, title, company, address, home_phone,
+                        mobile_phone, work_phone, fax, email, homepage, address2, phone2, notes):
         #создание нового контакта
         wd.find_element_by_link_text("add new").click()
         #заполнение формы контакта
