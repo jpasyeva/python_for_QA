@@ -11,12 +11,10 @@ class CreateNewContact(unittest.TestCase):
 
     def test_create_new_contact(self):
         wd = self.wd
-        self.open_home_page(wd)
         self.login(wd, "admin", "secret")
         self.add_new_contact(wd, Contact(firstname=u"Фамилия", middlename=u"Отчество", lastname=u"Имя", nickname=u"Никнейм", title =u"Заголовок", company=u"Компания", address= u"Адрес",
                              home_phone=u"Домашний телефон", mobile_phone=u"Мобильный телефон", work_phone=u"Рабочий телефон", fax=u"Факс",
                              email=u"электронная почта", homepage=u"сайт", address2=u"адрес2", phone2=u"дом", notes=u"заметка"))
-        self.return_home_page(wd)
         self.logout(wd)
 
     def logout(self, wd):
@@ -83,8 +81,10 @@ class CreateNewContact(unittest.TestCase):
         wd.find_element_by_name("notes").send_keys(contact.notes)
         #нажатие кнопки submit
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
+        self.return_home_page(wd)
 
     def login(self, wd, username, password):
+        self.open_home_page(wd)
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
