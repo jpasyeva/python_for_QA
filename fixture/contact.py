@@ -77,10 +77,16 @@ class ContactHelper:
         # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
         wd.switch_to_alert().accept()
 
+    def delete_all_contacts(self):
+        wd = self.app.wd
+        # выбрать все элементы
+        wd.find_element_by_id("MassCB").click()
+        # нажать кнопку удалить
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
+        wd.switch_to_alert().accept()
 
-    # def delete_all_contact(self):
-    #
-    #
+
     def edit_first_contact(self, contact):
         wd = self.app.wd
         # нажатие икноки редактирования у первого контакта
