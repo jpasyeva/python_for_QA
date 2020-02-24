@@ -68,13 +68,15 @@ class ContactHelper:
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_home_page()
 
-    # def delete_first_contact(self):
-    #     wd = self.app.wd
-    #     # выбрать первый элемент
-    #     wd.find_element_by_name("selected[]").click()
-    #     # нажать кнопку удалить
-    #     wd.find_element_by_value("Delete").click()
-    #     self.app.return_home_page()
+    def delete_first_contact(self):
+        wd = self.app.wd
+        # выбрать первый элемент
+        wd.find_element_by_name("selected[]").click()
+        # нажать кнопку удалить
+        wd.find_element_by_xpath("//input[@value='Delete']").click()
+        # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
+        wd.switch_to_alert().accept()
+
     #
     # def delete_all_contact(self):
     #
