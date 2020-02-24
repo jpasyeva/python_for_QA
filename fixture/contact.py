@@ -77,7 +77,7 @@ class ContactHelper:
         # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
         wd.switch_to_alert().accept()
 
-    #
+
     # def delete_all_contact(self):
     #
     #
