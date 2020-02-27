@@ -7,11 +7,9 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
-    def add_new(self, contact):
+    def filling_form(self, contact):
         wd = self.app.wd
-        #создание нового контакта
-        wd.find_element_by_link_text("add new").click()
-        #заполнение формы контакта
+        #заполнение формы
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -64,6 +62,13 @@ class ContactHelper:
         wd.find_element_by_name("phone2").send_keys(contact.phone2)
         wd.find_element_by_name("notes").clear()
         wd.find_element_by_name("notes").send_keys(contact.notes)
+
+    def add_new(self):
+        wd = self.app.wd
+        #создание нового контакта
+        wd.find_element_by_link_text("add new").click()
+        #вызов функции заполнения формы контакта
+        self.app.filling_form()
         #нажатие кнопки submit
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_home_page()
