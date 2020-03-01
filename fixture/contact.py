@@ -77,6 +77,6 @@ class ContactHelper:
         #self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
 
-    def count_ediit(self):
+    def count_edit(self):
         wd = self.app.wd
         return len(wd.find_elements_by_xpath("//img[@alt='Edit']"))

@@ -2,7 +2,7 @@
 from models.contact import Contact
 
 def test_edit_first_contact(app):
-    if app.contact.count_ediit() == 0:
+    if app.contact.count_edit() == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))
     # app.contact.add_new(Contact(firstname=u"", middlename=u"", lastname=u"", nickname=u"", title=u"", company=u"", address=u"", home_phone=u"", mobile_phone=u"", work_phone=u"",
     #             fax=u"", email=u"", homepage=u"", address2=u"", phone2=u"", notes=u""))
@@ -12,6 +12,6 @@ def test_edit_first_contact(app):
 
 
 def test_edit_contact_lastname(app):
-    if app.contact.count_ediit() == 0:
+    if app.contact.count_edit() == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))
     app.contact.edit_first_contact(Contact(lastname=u"New lastname"))
