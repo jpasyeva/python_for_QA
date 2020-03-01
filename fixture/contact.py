@@ -74,7 +74,6 @@ class ContactHelper:
 
     def count_select_checkbox(self):
         wd = self.app.wd
-        #self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
 
     def count_edit(self):
