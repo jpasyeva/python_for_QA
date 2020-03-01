@@ -71,3 +71,12 @@ class ContactHelper:
         # нажатие кнопки update
         wd.find_element_by_name("update").click()
         self.app.return_home_page()
+
+    def count_select_checkbox(self):
+        wd = self.app.wd
+        #self.open_group_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def count_ediit(self):
+        wd = self.app.wd
+        return len(wd.find_elements_by_xpath("//img[@alt='Edit']"))
