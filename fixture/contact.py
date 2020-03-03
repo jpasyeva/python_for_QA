@@ -5,6 +5,11 @@ class ContactHelper:
     def __init__(self, app):
         self.app = app
 
+    def open_contact_page(self):
+        wd = self.app.wd
+        if not (wd.current_url.endswith("/index.php") and len(wd.find_elements_by_name("searchstring")) > 0):
+            wd.find_element_by_link_text("home").click()
+
     def fill_form_contact(self, contact):
         wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)
@@ -74,8 +79,10 @@ class ContactHelper:
 
     def count_select_checkbox(self):
         wd = self.app.wd
+        self.open_contact_page()
         return len(wd.find_elements_by_name("selected[]"))
 
     def count_edit(self):
         wd = self.app.wd
+        self.open_contact_page()
         return len(wd.find_elements_by_xpath("//img[@alt='Edit']"))
