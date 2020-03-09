@@ -12,14 +12,15 @@ def test_edit_first_contact(app):
                                            work_phone=u"autotest", fax=u"autotest", email=u"autotest",
                                            homepage=u"autotest", address2=u"autotest", phone2=u"autotest",
                                            notes=u"autotest"))
+    assert len(old_contacts) == app.contact.count_edit()
     new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
 
 
-def test_edit_contact_lastname(app):
-    if app.contact.count_edit() == 0:
-        app.contact.add_new(Contact(firstname=u"First contact"))
-    old_contacts = app.contact.get_contact_list()
-    app.contact.edit_first_contact(Contact(lastname=u"New lastname"))
-    new_contacts = app.contact.get_contact_list()
-    assert len(old_contacts) == len(new_contacts)
+
+# def test_edit_contact_lastname(app):
+#     if app.contact.count_edit() == 0:
+#         app.contact.add_new(Contact(firstname=u"First contact"))
+#     old_contacts = app.contact.get_contact_list()
+#     app.contact.edit_first_contact(Contact(lastname=u"New lastname"))
+#     new_contacts = app.contact.get_contact_list()
+#     assert len(old_contacts) == len(new_contacts)

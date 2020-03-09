@@ -46,6 +46,7 @@ class ContactHelper:
         # нажатие кнопки submit
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_home_page()
+        self.contact_cache = None
 
     def delete_first_contact(self):
         wd = self.app.wd
@@ -56,6 +57,7 @@ class ContactHelper:
         # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
         wd.switch_to_alert().accept()
         wd.find_elements_by_css_selector("div.msgbox")
+        self.contact_cache = None
 
     def delete_all_contacts(self):
         wd = self.app.wd
@@ -66,6 +68,7 @@ class ContactHelper:
         # закрытие диалогового окна, в котором пользователь подтверждает удаление контакта
         wd.switch_to_alert().accept()
         wd.find_elements_by_css_selector("div.msgbox")
+        self.contact_cache = None
 
     def edit_first_contact(self, contact):
         wd = self.app.wd
@@ -76,6 +79,7 @@ class ContactHelper:
         # нажатие кнопки update
         wd.find_element_by_name("update").click()
         self.app.return_home_page()
+        self.contact_cache = None
 
     def count_select_checkbox(self):
         wd = self.app.wd
@@ -87,12 +91,15 @@ class ContactHelper:
         self.open_contact_page()
         return len(wd.find_elements_by_xpath("//img[@alt='Edit']"))
 
+    contact_cache = None
+
     def get_contact_list(self):
-        wd = self.app.wd
-        self.open_contact_page()
-        contacts = []
-        for element in wd.find_elements_by_name("entry"):
-            text = element.text
-            element.find_element_by_name("selected[]").get_attribute("value")
-            contacts.append(Contact(firstname=text, id_contact=id))
-        return contacts
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
+            for element in wd.find_elements_by_name("entry"):
+                text = element.text
+                element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(firstname=text, id_contact=id))
+        return list(self.contact_cache)
