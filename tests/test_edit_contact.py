@@ -1,12 +1,13 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
-
+from random import randrange
 
 def test_edit_first_contact(app):
     if app.contact.count_edit() == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))
     old_contacts = app.contact.get_contact_list()
-    app.contact.edit_first_contact(Contact(firstname=u"autotest", middlename=u"autotest", lastname=u"autotest",
+    index = randrange(len(old_contacts))
+    app.contact.edit_contact_by_index(index, Contact(firstname=u"autotest", middlename=u"autotest", lastname=u"autotest",
                                            nickname=u"autotest", title=u"autotest", company=u"autotest",
                                            address=u"autotest", home_phone=u"autotest", mobile_phone=u"autotest",
                                            work_phone=u"autotest", fax=u"autotest", email=u"autotest",

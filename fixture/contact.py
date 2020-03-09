@@ -72,10 +72,13 @@ class ContactHelper:
         wd.find_elements_by_css_selector("div.msgbox")
         self.contact_cache = None
 
-    def edit_first_contact(self, contact):
+    def edit_first_contact(self):
+        self.edit_contact_by_index(0)
+
+    def edit_contact_by_index(self, index, contact):
         wd = self.app.wd
-        # нажатие икноки редактирования у первого контакта
-        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        # нажатие икноки редактирования
+        wd.find_elements_by_xpath("//img[@alt='Edit']")[index].click()
         # вызов функции заполнения формы контакта
         self.fill_form_contact(contact)
         # нажатие кнопки update
