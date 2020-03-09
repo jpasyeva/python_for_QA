@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from models.contact import Contact
+
 
 class ContactHelper:
 
@@ -11,7 +13,6 @@ class ContactHelper:
             wd.find_element_by_link_text("home").click()
 
     def fill_form_contact(self, contact):
-        wd = self.app.wd
         self.change_field_value("firstname", contact.firstname)
         self.change_field_value("middlename", contact.middlename)
         self.change_field_value("lastname", contact.lastname)
@@ -38,11 +39,11 @@ class ContactHelper:
 
     def add_new(self, contact):
         wd = self.app.wd
-        #создание нового контакта
+        # создание нового контакта
         wd.find_element_by_link_text("add new").click()
-        #вызов функции заполнения формы контакта
+        # вызов функции заполнения формы контакта
         self.fill_form_contact(contact)
-        #нажатие кнопки submit
+        # нажатие кнопки submit
         wd.find_element_by_xpath("(//input[@name='submit'])[2]").click()
         self.app.return_home_page()
 
@@ -66,7 +67,6 @@ class ContactHelper:
         wd.switch_to_alert().accept()
         wd.find_elements_by_css_selector("div.msgbox")
 
-
     def edit_first_contact(self, contact):
         wd = self.app.wd
         # нажатие икноки редактирования у первого контакта
@@ -86,3 +86,13 @@ class ContactHelper:
         wd = self.app.wd
         self.open_contact_page()
         return len(wd.find_elements_by_xpath("//img[@alt='Edit']"))
+
+    def get_contact_list(self):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name("entry"):
+            text = element.text
+            element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(firstname=text, id_contact=id))
+        return contacts
