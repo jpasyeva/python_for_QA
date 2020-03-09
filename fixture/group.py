@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
+from models.group import Group
 
-class GrouptHelper:
+
+class GroupHelper:
 
     def __init__(self, app):
         self.app = app
@@ -11,7 +13,6 @@ class GrouptHelper:
             wd.find_element_by_link_text("groups").click()
 
     def fill_form_group(self, group):
-        wd = self.app.wd
         self.change_field_value("group_name", group.name_group)
         self.change_field_value("group_header", group.header)
         self.change_field_value("group_footer", group.footer)
@@ -38,7 +39,7 @@ class GrouptHelper:
         wd = self.app.wd
         self.open_group_page()
         self.select_first_group()
-        #нажать кнопку удаления
+        # нажать кнопку удаления
         wd.find_element_by_name("delete").click()
         self.return_to_group_page()
 
@@ -50,7 +51,7 @@ class GrouptHelper:
         wd.find_element_by_name("edit").click()
         # вызов метода заполнения формы
         self.fill_form_group(new_group_data)
-        #нажать кнопку update
+        # нажать кнопку update
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
 
@@ -66,3 +67,13 @@ class GrouptHelper:
         wd = self.app.wd
         self.open_group_page()
         return len(wd.find_elements_by_name("selected[]"))
+
+    def get_group_list(self):
+        wd = self.app.wd
+        self.open_group_page()
+        groups = []
+        for element in wd.find_elements_by_css_selector("span.group"):
+            text = element.text
+            element.find_element_by_name("selected[]").get_attribute("value")
+            groups.append(Group(name_group=text, id_group=id))
+        return groups
