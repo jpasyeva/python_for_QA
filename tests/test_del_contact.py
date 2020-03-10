@@ -12,7 +12,6 @@ def test_delete_some_contact(app):
     new_contacts = app.contact.get_contact_list()
 
 
-
 def test_delete_all_contacts(app):
     if app.contact.count_edit() == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))
