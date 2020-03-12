@@ -12,7 +12,7 @@ def test_delete_some_contact(app):
     assert len(old_contacts) - 1 == app.contact.count_edit()
     new_contacts = app.contact.get_contact_list()
     old_contacts[index:index+1] = []
-    assert old_contacts == new_contacts
+    assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
 
 
 def test_delete_all_contacts(app):
