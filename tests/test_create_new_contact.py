@@ -3,7 +3,6 @@ from models.contact import Contact
 import pytest
 import random
 import string
-from sys import maxsize
 
 
 def random_string(prefix, maxlen):
@@ -32,5 +31,3 @@ def test_create_new_contact(app, contact):
     new_contacts = app.contact.get_contact_list()
     old_contacts.append(contact)
     assert sorted(old_contacts, key=Contact.id_or_max) == sorted(new_contacts, key=Contact.id_or_max)
-
-
