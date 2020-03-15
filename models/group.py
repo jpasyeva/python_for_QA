@@ -7,16 +7,16 @@ class Group:
         self.name_group = name_group
         self.header = header
         self.footer = footer
-        self.id = id_group
+        self.id_group = id_group
 
     def __repr__(self):
-        return "%s:%s" % (self.id, self.name_group)
+        return "%s:%s:%s:%s" % (self.id_group, self.name_group, self.header, self.footer)
 
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and self.name_group == other.name_group
+        return (self.id_group is None or other.id_group is None or self.id_group == other.id_group) and self.name_group == other.name_group
 
     def id_or_max(self):
-        if self.id:
-            return int(self.id)
+        if self.id_group:
+            return int(self.id_group)
         else:
             return maxsize

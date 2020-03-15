@@ -17,7 +17,7 @@ def test_edit_group_name(app):
     old_groups = app.group.get_group_list()
     index = randrange(len(old_groups))
     group = Group(name_group="New name")
-    group.id = old_groups[index].id
+    group.id_group = old_groups[index].id_group
     app.group.edit_group_by_index(index, group)
     assert len(old_groups) == app.group.count()
     new_groups = app.group.get_group_list()
