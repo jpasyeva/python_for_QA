@@ -25,19 +25,19 @@ class Contact:
         self.address2 = address2
         self.phone2 = phone2
         self.notes = notes
-        self.id = id_contact
+        self.id_contact = id_contact
         self.all_phones_from_home_page = all_phones_from_home_page
         self.all_emails_from_home_page = all_emails_from_home_page
 
     def __repr__(self):
-        return "%s:%s:%s" % (self.id, self.firstname, self.lastname)
+        return "%s:%s:%s" % (self.id_contact, self.firstname, self.lastname)
 
     def __eq__(self, other):
-        return (self.id is None or other.id is None or self.id == other.id) and (self.lastname == other.lastname) and \
-               self.firstname == other.firstname
+        return (self.id_contact is None or other.id_contact is None or self.id_contact == other.id_contact) \
+               and (self.lastname == other.lastname) and self.firstname == other.firstname
 
     def id_or_max(self):
-        if self.id:
-            return int(self.id)
+        if self.id_contact:
+            return int(self.id_contact)
         else:
             return maxsize

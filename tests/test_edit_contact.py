@@ -14,7 +14,7 @@ def test_edit_some_contact(app):
                       fax=u"Факс",
                       email=u"электронная почта", email2="email2", email3="email3",
                       homepage=u"сайт", address2=u"адрес2", phone2=u"дом", notes=u"заметка")
-    contact.id = old_contacts[index].id
+    contact.id_contact = old_contacts[index].id_contact
     app.contact.edit_contact_by_index(index, contact)
     assert len(old_contacts) == app.contact.count_edit()
     new_contacts = app.contact.get_contact_list()
