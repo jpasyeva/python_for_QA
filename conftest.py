@@ -38,14 +38,14 @@ def pytest_addoption(parser):
     parser.addoption("--target", action='store', default="target.json")
 
 
-def pytest_generate_tests(matafunc):
-    for fixture in matafunc.fixturenames:
+def pytest_generate_tests(metafunc):
+    for fixture in metafunc.fixturenames:
         if fixture.startswith("data_"):
             testdata = load_from_module(fixture[5:])
-            matafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
         elif fixture.startswith("json_"):
             testdata = load_from_json(fixture[5:])
-            matafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
+            metafunc.parametrize(fixture, testdata, ids=[str(x) for x in testdata])
 
 
 def load_from_module(module):
