@@ -1,43 +1,18 @@
 # -*- coding: utf-8 -*-
 from models.group import Group
-from random import randrange
-
-# def test_edit_first_group(app):
-#     if app.group.count() == 0:
-#         app.group.create(Group(name_group="First group"))
-#     old_groups = app.group.get_group_list()
-#     app.group.edit_first(Group(name_group="autotest", header="autotest", footer="autotest"))
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
+import random
 
 
-def test_edit_group_name(app):
-    if app.group.count() == 0:
+def test_edit_group_name(app, db):
+    if len(db.get_group_list()) == 0:
         app.group.create(Group(name_group="First group"))
-    old_groups = app.group.get_group_list()
-    index = randrange(len(old_groups))
-    group = Group(name_group="New name")
-    group.id_group = old_groups[index].id_group
-    app.group.edit_group_by_index(index, group)
-    assert len(old_groups) == app.group.count()
-    new_groups = app.group.get_group_list()
-    old_groups[index] = group
+    old_groups = db.get_group_list()
+    group = random.choice(old_groups)
+    edit_group = Group(name_group="New name")
+    app.group.edit_group_by_id(group.id_group, edit_group)
+    new_groups = db.get_group_list()
+    pos = old_groups.index(group)
+    old_groups[pos] = edit_group
+    assert old_groups == new_groups
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
 
-
-# def test_edit_group_header(app):
-#     if app.group.count() == 0:
-#         app.group.create(Group(name_group="First group"))
-#     old_groups = app.group.get_group_list()
-#     app.group.edit_first(Group(header="New header"))
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
-#
-#
-# def test_edit_group_footer(app):
-#     if app.group.count() == 0:
-#         app.group.create(Group(name_group="First group"))
-#     old_groups = app.group.get_group_list()
-#     app.group.edit_first(Group(footer="New footer"))
-#     new_groups = app.group.get_group_list()
-#     assert len(old_groups) == len(new_groups)
