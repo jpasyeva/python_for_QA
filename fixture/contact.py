@@ -74,10 +74,6 @@ class ContactHelper:
         wd.find_elements_by_css_selector("div.msgbox")
         self.contact_cache = None
 
-    # def select_contact_by_id(self, id):
-    #     wd = self.app.wd
-    #     wd.find_element_by_css_selector("input[value='%s']" % id).click()
-
     def delete_all_contacts(self):
         wd = self.app.wd
         # выбрать все элементы
