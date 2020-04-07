@@ -15,6 +15,17 @@ def test_contact_on_home_page(app):
     assert contact_from_home_page.all_emails_from_home_page == merge_emails_like_on_home_page(contact_from_edit_page)
     assert contact_from_home_page.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_edit_page)
 
+def test_contact_like_db_and_home(app, db):
+    contacts_db = sorted(db.get_contact_list(), key=Contact.id_or_max)
+    contacts_on_home_page = sorted(app.contact.get_contact_list(), key=Contact.id_or_max)
+    for i in range(len(contacts_on_home_page)):
+        contact_from_home_page = contacts_on_home_page[i]
+        contact_from_db = contacts_db[i]
+        assert contact_from_home_page.id_contact == contact_from_db.id_contact
+        assert contact_from_home_page.firstname == contact_from_db.firstname
+        assert contact_from_home_page.lastname == contact_from_db.lastname
+
+
 
 def test_phones_on_contact_view_page(app):
     contact = app.contact.get_contact_list()
