@@ -35,33 +35,20 @@ class DbFixture:
             cursor.close()
         return list
 
-    def get_contact_tel_list(self):
+    def get_contact_list_from_db(self):
         list_tel = []
         cursor = self.connection.cursor()
         try:
-            cursor.execute("select id, firstname, lastname, home, mobile, work, phone2 from addressbook where deprecated='0000-00-00 00:00'")
+            cursor.execute("select id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3 from addressbook where deprecated='0000-00-00 00:00'")
             for row in cursor:
-                (id, firstname, lastname, home, mobile, work, phone2) = row
+                (id, firstname, lastname, address, home, mobile, work, phone2, email, email2, email3) = row
                 list_tel.append(
-                    Contact(id_contact=str(id), firstname=firstname, lastname=lastname, home_phone=home, mobile_phone=mobile,
-                             work_phone=work, phone2=phone2))
-        finally:
-            cursor.close()
-        return list_tel
-
-    def get_contact_mail_list(self):
-        list = []
-        cursor = self.connection.cursor()
-        try:
-            cursor.execute(
-                "select id, firstname, lastname, email, email2, email3 from addressbook where deprecated='0000-00-00 00:00'")
-            for row in cursor:
-                (id, firstname, lastname, email, email2, email3) = row
-                list.append(Contact(id_contact=str(id), firstname=firstname, lastname=lastname, email=email, email2=email2,
+                    Contact(id_contact=str(id), firstname=firstname, lastname=lastname, address=address, home_phone=home, mobile_phone=mobile,
+                             work_phone=work, phone2=phone2,  email=email, email2=email2,
                                      email3=email3))
         finally:
             cursor.close()
-        return list
+        return list_tel
 
     def destroy(self):
         self.connection.close()

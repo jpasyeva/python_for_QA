@@ -1,21 +1,19 @@
 import re
-from models.contact import Contact
 
 
 def test_phones_on_homepage(app, db):
-    contact_from_homepage = app.contact.get_contact_list()
-    contact_from_db = db.get_contact_tel_list()
-    for element in contact_from_homepage:
-        user = contact_from_db.index(element)
-        assert element.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_db[user])
-
-
-def test_mail_on_homepage(app, db):
-    contact_from_homepage = app.contact.get_contact_list()
-    contact_from_db = db.get_contact_mail_list()
-    for element in contact_from_homepage:
-        user = contact_from_db.index(element)
-        assert element.all_emails_from_home_page == merge_email_like_on_homepage(contact_from_db[user])
+    contacts_from_homepage = app.contact.get_contact_list()
+    contacts_from_db = db.get_contact_list_from_db()
+    for contact_from_homepage in contacts_from_homepage:
+        id_contact = contact_from_homepage.id_contact
+        for contact_from_db in contacts_from_db:
+            id_contact2 = contact_from_db.id_contact
+            if id_contact == id_contact2:
+                assert contact_from_homepage.lastname == contact_from_db.lastname
+                assert contact_from_homepage.firstname == contact_from_db.firstname
+                assert contact_from_homepage.address == contact_from_db.address
+                assert contact_from_homepage.all_emails_from_home_page == merge_email_like_on_homepage(contact_from_db)
+                assert contact_from_homepage.all_phones_from_home_page == merge_phones_like_on_home_page(contact_from_db)
 
 
 
@@ -34,3 +32,4 @@ def merge_email_like_on_homepage(contact):
     return "\n".join(filter(lambda x: x != "",
                      filter(lambda x: x is not None,
                             [contact.email, contact.email2, contact.email3])))
+
