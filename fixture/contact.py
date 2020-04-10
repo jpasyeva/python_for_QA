@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
+from selenium.webdriver.support.ui import Select
 import re
 
 
@@ -172,11 +173,45 @@ class ContactHelper:
         phone2 = re.search("P: (.*)", text).group(1)
         return Contact(home_phone=home_phone, mobile_phone=mobile_phone, work_phone=work_phone, phone2=phone2)
 
-    def add_contact_to_group(self, id, group_id):
+    # def add_contact_to_group(self, id, group_id):
+    #     wd = self.app.wd
+    #     self.app.open_home_page()
+    #     wd.find_element_by_xpath('//input[@id="%s"]' % id).click()
+    #     wd.find_element_by_xpath('//select[@name = "to_group"]').click()
+    #     wd.find_elements_by_css_selector('select[name="to_group"] > option[value="%s"]' % group_id)[0].click()
+    #     wd.find_element_by_xpath('//input[@name="add"]').click()
+    #     self.contact_cache = None
+
+    def add_contact_to_group_by_name(self, contact_id, group_id):
         wd = self.app.wd
         self.app.open_home_page()
-        wd.find_element_by_xpath('//input[@id="%s"]' % id).click()
-        wd.find_element_by_xpath('//select[@name = "to_group"]').click()
-        wd.find_elements_by_css_selector('select[name="to_group"] > option[value="%s"]' % group_id)[0].click()
-        wd.find_element_by_xpath('//input[@name="add"]').click()
-        self.contact_cache = None
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_name("to_group").click()
+        select = Select(wd.find_element_by_name("to_group"))
+        select.select_by_value(group_id)
+        wd.find_element_by_xpath('//input[@value="Add to"]').click()
+        wd.find_element_by_xpath('//i//*[contains(text(),"group page")]').click()
+
+    def select_contact_by_id(self, id):
+        wd = self.app.wd
+        wd.find_element_by_id(id).click()
+
+    def sort_by_group_by_id(self, group_id):
+        wd = self.app.wd
+        select = Select(wd.find_element_by_xpath('//select[@name="group"]'))
+        select.select_by_value(group_id)
+
+    def get_contact_info_by_id(self, contact_id):
+        wd = self.app.wd
+        self.app.open_home_page()
+        row = wd.find_element_by_xpath('//td/*[@id="' + contact_id + '"]/../..')
+        cells = row.find_elements_by_tag_name("td")
+        id = cells[0].find_element_by_tag_name("input").get_attribute("value")
+        firstname = cells[2].text
+        lastname = cells[1].text
+        address = cells[3].text
+        all_emails = cells[4].text
+        all_phones = cells[5].text
+        return Contact(id_contact=id, firstname=firstname, lastname=lastname, address=address,
+                       all_emails_from_home_page=all_emails, all_phones_from_home_page=all_phones)
+
