@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 .idea
+check_db_connection.py

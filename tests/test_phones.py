@@ -25,8 +25,6 @@ def test_contact_like_db_and_home(app, db):
         assert contact_from_home_page.firstname == contact_from_db.firstname
         assert contact_from_home_page.lastname == contact_from_db.lastname
 
-
-
 def test_phones_on_contact_view_page(app):
     contact = app.contact.get_contact_list()
     index = randrange(len(contact))
