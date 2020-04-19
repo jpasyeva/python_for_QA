@@ -1,12 +1,7 @@
-attrs
 jsonpickle
-more-itertools
-pluggy
 pony
 py
 PyMySQL
 pytest
 pytest-bdd
 selenium
-six
-urllib3
