@@ -70,5 +70,3 @@ def verify_group_modified(app, db, non_empty_group_list, index_random_group, gro
     assert sorted(old_groups, key=Group.id_or_max) == sorted(new_groups, key=Group.id_or_max)
     if check_ui:
         assert sorted(new_groups, key=Group.id_or_max) == sorted(app.group.get_group_list(), key=Group.id_or_max)
-    if len(old_groups) == 1:
-        app.group.delete_group_by_id(modify_group.id)
