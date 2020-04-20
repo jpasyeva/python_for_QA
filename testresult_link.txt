@@ -1,0 +1,6 @@
+https://yadi.sk/i/CFYnS-t2muXIeA настройки для проекта запуска тестов из папки bdd
+https://yadi.sk/i/Hy8cY1vdrU5vkA cucumber report для тестов из папки bdd
+https://yadi.sk/i/K9CutnuZo563_Q cucumber test result для тестов из папки bdd
+
+https://yadi.sk/i/mupKb-CTvvRsiw настройки для проекта запуска тестов из папки tests
+https://yadi.sk/i/vCUS3pwQ69_2uw прохождение тестов из папки tests
