@@ -102,6 +102,7 @@ class ContactHelper:
 
     def edit_contact_by_id(self, contact_id, contact):
         wd = self.app.wd
+        self.open_contact_page()
         self.select_contact_by_id(contact_id)
         wd.find_element_by_xpath("//img[@alt='Edit']").click()
         self.fill_form_contact(contact)
