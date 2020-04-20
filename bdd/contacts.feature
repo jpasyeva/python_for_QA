@@ -17,7 +17,7 @@ Scenario: Delete a contact
   Then the new contact list is equal to the old list without the deleted contact
 
 
-Scenario: Modify a contact
+Scenario Outline: Modify a contact
   Given a non-empty contact list
   Given a random contact from the list
   Given a contact with <lastname>, <firstname>, <address>, <homephone>, <mobilephone>, <workphone>, <secondaryphone>, <email>, <email2> and <email3>
