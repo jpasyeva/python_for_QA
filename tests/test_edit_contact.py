@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
 from random import randrange
+import pytest
 
 
+@pytest.mark.ui_tests
 def test_edit_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname="First contact"))

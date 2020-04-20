@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
 import random
+import pytest
 
-
+@pytest.mark.ui_tests
 def test_delete_some_contact(app, db, check_ui):
     if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))
@@ -15,7 +16,7 @@ def test_delete_some_contact(app, db, check_ui):
     if check_ui:
         assert sorted(new_contacts, key=Contact.id_or_max) == sorted(app.contact.get_group_list(), key=Contact.id_or_max)
 
-
+@pytest.mark.del_contact
 def test_delete_all_contacts(app, db):
     if len(db.get_contact_list()) == 0:
         app.contact.add_new(Contact(firstname=u"First contact"))

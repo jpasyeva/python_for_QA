@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from models.contact import Contact
+import pytest
 
-
+@pytest.mark.ui_tests
 def test_create_new_contact(app, db, json_contacts, check_ui):
     contact = json_contacts
     old_contacts = db.get_contact_list()
