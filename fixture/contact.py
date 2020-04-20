@@ -100,6 +100,15 @@ class ContactHelper:
         self.app.return_home_page()
         self.contact_cache = None
 
+    def edit_contact_by_id(self, contact_id, contact):
+        wd = self.app.wd
+        self.select_contact_by_id(contact_id)
+        wd.find_element_by_xpath("//img[@alt='Edit']").click()
+        self.fill_form_contact(contact)
+        wd.find_element_by_name("update").click()
+        self.app.return_home_page()
+        self.contact_cache = None
+
     def count_select_checkbox(self):
         wd = self.app.wd
         self.open_contact_page()

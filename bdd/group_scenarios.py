@@ -6,6 +6,12 @@ from .group_steps import *
 def test_add_new_group():
     pass
 
+
 @scenario("groups.feature", "Delete a group")
 def test_delete_group():
+    pass
+
+
+@scenario('groups.feature', 'Modify a group')
+def test_modify_group():
     pass
