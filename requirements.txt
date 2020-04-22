@@ -5,3 +5,6 @@ PyMySQL
 pytest
 pytest-bdd
 selenium
+
+allure-pytest
+mysql-connector-python-rf

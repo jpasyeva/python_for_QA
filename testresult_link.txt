@@ -4,3 +4,5 @@ https://yadi.sk/i/K9CutnuZo563_Q cucumber test result для тестов из �
 
 https://yadi.sk/i/mupKb-CTvvRsiw настройки для проекта запуска тестов из папки tests
 https://yadi.sk/i/vCUS3pwQ69_2uw прохождение тестов из папки tests
+
+https://yadi.sk/i/_ab2q4a9JBrvSw скриншот собраного отчета allure

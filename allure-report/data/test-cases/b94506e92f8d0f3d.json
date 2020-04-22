@@ -1,0 +1,203 @@
+{
+  "uid" : "b94506e92f8d0f3d",
+  "name" : "test_add_group[None:name :headerId a:footergsEQ8 zrs]",
+  "fullName" : "tests.test_add_group#test_add_group",
+  "historyId" : "f56b700591d17872d2558453b20b92ee",
+  "time" : {
+    "start" : 1587569476923,
+    "stop" : 1587569479771,
+    "duration" : 2848
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "beforeStages" : [ {
+    "name" : "check_ui",
+    "time" : {
+      "start" : 1587569476923,
+      "stop" : 1587569476923,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "stop",
+    "time" : {
+      "start" : 1587569454716,
+      "stop" : 1587569454717,
+      "duration" : 1
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "app",
+    "time" : {
+      "start" : 1587569476871,
+      "stop" : 1587569476923,
+      "duration" : 52
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "db",
+    "time" : {
+      "start" : 1587569454717,
+      "stop" : 1587569454760,
+      "duration" : 43
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "testStage" : {
+    "status" : "passed",
+    "steps" : [ {
+      "name" : "Given a group list",
+      "time" : {
+        "start" : 1587569476924,
+        "stop" : 1587569476924,
+        "duration" : 0
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "When I add a group None:name :headerId a:footergsEQ8 zrs to the list",
+      "time" : {
+        "start" : 1587569476924,
+        "stop" : 1587569479770,
+        "duration" : 2846
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    }, {
+      "name" : "Then the new group list is equal to the old list with the added group",
+      "time" : {
+        "start" : 1587569479770,
+        "stop" : 1587569479771,
+        "duration" : 1
+      },
+      "status" : "passed",
+      "steps" : [ ],
+      "attachments" : [ ],
+      "parameters" : [ ],
+      "stepsCount" : 0,
+      "attachmentsCount" : 0,
+      "shouldDisplayMessage" : false,
+      "hasContent" : false
+    } ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 3,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : true
+  },
+  "afterStages" : [ {
+    "name" : "stop::fin",
+    "time" : {
+      "start" : 1587569481423,
+      "stop" : 1587569490940,
+      "duration" : 9517
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  }, {
+    "name" : "db::fin",
+    "time" : {
+      "start" : 1587569481422,
+      "stop" : 1587569481422,
+      "duration" : 0
+    },
+    "status" : "passed",
+    "steps" : [ ],
+    "attachments" : [ ],
+    "parameters" : [ ],
+    "stepsCount" : 0,
+    "attachmentsCount" : 0,
+    "shouldDisplayMessage" : false,
+    "hasContent" : false
+  } ],
+  "labels" : [ {
+    "name" : "tag",
+    "value" : "ui_tests"
+  }, {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_add_group"
+  }, {
+    "name" : "host",
+    "value" : "utqa-2"
+  }, {
+    "name" : "thread",
+    "value" : "25158-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_add_group"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ {
+    "name" : "json_groups",
+    "value" : "None:name :headerId a:footergsEQ8 zrs"
+  } ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ "ui_tests" ]
+  },
+  "source" : "b94506e92f8d0f3d.json",
+  "parameterValues" : [ "None:name :headerId a:footergsEQ8 zrs" ]
+}

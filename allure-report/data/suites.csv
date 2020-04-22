@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Wed Apr 22 18:31:19 MSK 2020","Wed Apr 22 18:31:21 MSK 2020","1590","tests","test_add_group","","","","test_add_group[None:nameSjT b:header26Y:footerLH]",""
+"passed","Wed Apr 22 18:31:16 MSK 2020","Wed Apr 22 18:31:19 MSK 2020","2848","tests","test_add_group","","","","test_add_group[None:name :headerId a:footergsEQ8 zrs]",""
+"passed","Wed Apr 22 18:31:13 MSK 2020","Wed Apr 22 18:31:16 MSK 2020","3139","tests","test_add_group","test_add_group[None","","","test_add_group[None:::]",""

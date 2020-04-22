@@ -131,3 +131,4 @@ dmypy.json
 .idea
 check_db_connection.py
 /.idea/
+/allure-commandline-2.9.0/
